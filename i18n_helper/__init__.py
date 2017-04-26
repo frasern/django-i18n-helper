@@ -45,8 +45,8 @@ if I18N_HELPER_DEBUG and RUNSERVER:
     @wraps(django.utils.translation.ungettext)
     @wraps(django.utils.translation.pgettext)
     @wraps(django.utils.translation.npgettext)
-    def wrapper(original_function, *args):
-        original_result = original_function(*args)
+    def wrapper(original_function, *args, **kwargs):
+        original_result = original_function(*args, **kwargs)
         return mark_safe(i18n_helper_block.format(original_result))
 
     # Override all the lazy translation functions
